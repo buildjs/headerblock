@@ -1,0 +1,32 @@
+{
+  "name": "headerblock",
+  "description": "Simple module designed to create header blocks for source files from package.json data",
+  "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
+  "tags": [
+    "source",
+    "buildjs",
+    "comment"
+  ],
+  "version": "0.0.0",
+  "engines": {
+    "node": ">= 0.6.x < 0.9.0"
+  },
+  "dependencies": {
+    "async": "0.1.x",
+    "underscore": "1.3.x"
+  },
+  "devDependencies": {
+    "mocha": "1.5.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/buildjs/headerblock.git"
+  },
+  "bugs": {
+    "url": "http://github.com/buildjs/headerblock/issues"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "contributors": []
+}
