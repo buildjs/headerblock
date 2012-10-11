@@ -29,11 +29,11 @@ module.exports = function(opts, content) {
     comments = fileComments[filetype] || slashStarComments;
     
     // if we have a leader then add an additional line for a tidy output
-    if (opts.leader) { lines.shift(''); }
+    if (opts.leader) { lines.unshift(''); }
     
     // iterate through the lines and add the comments
     lines = lines.map(function(line, index) {
-        var comment = comments[index === 0 ? 'leading' : (index === lastLineIdx ? 'end' : 'line' )];
+        var comment = comments[index === 0 ? 'leading' : 'line'];
         
         // if we are at the first line, then add the optional leader
         if (index === 0) {
@@ -42,7 +42,7 @@ module.exports = function(opts, content) {
 
         // add the comment line to the content line
         return comment + line;
-    });
+    }).concat(comments.end);
 
     // wrap in the comments
     return lines.join(lineEnding);

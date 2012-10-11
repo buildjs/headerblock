@@ -25,3 +25,7 @@ headerblock(packageData, { filetype: 'coffee' }, function(err, output) {
   // generated, coffeescript block commented header generated and in output
 });
 ```
+
+## Sample Generated Header Blocks
+
+To be completed.

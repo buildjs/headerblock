@@ -6,9 +6,11 @@ var async = require('async'),
     _ = require('underscore'),
     defaultData = {
         name: '',
+        description: '',
         version: '',
+        generator: 'headerblock',
         url: null,
-        builddate: null,
+        builddate: new Date().toISOString(),
         md5: null,
         copyright: null,
         licenses: []
@@ -30,11 +32,6 @@ module.exports = function(data, opts, callback) {
     // ensure the data has defaults
     data = _.defaults({}, data, defaultData);
     
-    // if we are to include the builddate, then include that now
-    if (! opts.nodate) {
-        data.builddate = new Date().toISOString();
-    }
-    
     // if we have a template option specified, then add some additional paths
     if (opts.template) {
         templatePaths.shift(path.resolve(__dirname, 'templates', opts.template + '.txt'));
@@ -46,6 +43,11 @@ module.exports = function(data, opts, callback) {
         // read the template file
         fs.readFile(templatePath, 'utf8', function(err, content) {
             if (err) return callback(err);
+            
+            // add the packagename leader if it doesn't exist already
+            if (data.name) {
+                opts.leader = ' ~' + data.name + '~';
+            }
             
             try {
                 // fire the callback

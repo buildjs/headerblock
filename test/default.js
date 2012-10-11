@@ -3,6 +3,7 @@ var headerblock = require('../'),
     path = require('path'),
     crypto = require('crypto'),
     assert = require('assert'),
+    _ = require('underscore'),
     reLeadingDot = /^\./;
     
 function runAndCheck(targetPath, filetype) {
@@ -12,7 +13,7 @@ function runAndCheck(targetPath, filetype) {
         referenceFile = path.join(basePath, 'output.' + filetype.replace(reLeadingDot, ''));
     
     return function(done) {
-        headerblock(data, { filetype: filetype, nodate: true }, function(err, output) {
+        headerblock(_.defaults(data, { builddate: '' }), { filetype: filetype }, function(err, output) {
             assert.ifError(err);
             
             fs.writeFileSync(path.join(basePath, '__output.txt'), output, 'utf8');

@@ -1,15 +1,10 @@
-<%= name %><% if (version) { %> v<%= version %><% } %><%= version %><% if (url) { %>
-url     => <%= url %>
-<% } %><% if (builddate) { %>
-build   => <%= builddate %>
-<% } %><% if (md5) { %>
-md5     => <%= md5 %>
-<% } %>
-<% if (copyright) { %>
+<%= description %>
 
-<%= copyright %>
+-meta---
+version:    <%= version %>
+builddate:  <%= builddate %>
+generator:  <%= generator %>
 
-<% } %>
-<% if (licenses) _.each([].concat(licenses), function(license) { %>
-Licensed under <%= license.type %> (<%= license.url %>) license.
-<% }); %> 
+<% if (licenses.length > 0) { %>licenses:<% _.each(licenses, function(license) { %>
+    - <%= license.type %> (<%= license.url %>)
+<% }); } %>
