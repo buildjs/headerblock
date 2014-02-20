@@ -7,7 +7,7 @@ var async = require('async'),
     defaultData = {
         name: '',
         description: '',
-        version: '',
+        version: '0.1.1',
         generator: 'headerblock',
         url: null,
         builddate: new Date().toISOString(),
