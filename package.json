@@ -23,7 +23,8 @@
     "url": "http://github.com/buildjs/headerblock/issues"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "gendocs": "gendocs > README.md"
   },
   "homepage": "https://github.com/buildjs/headerblock",
   "main": "index.js",
