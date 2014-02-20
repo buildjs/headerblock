@@ -7,7 +7,6 @@ var async = require('async'),
     defaultData = {
         name: '',
         description: '',
-        version: '0.1.1',
         generator: 'headerblock',
         url: null,
         builddate: new Date().toISOString(),
@@ -31,6 +30,10 @@ module.exports = function(data, opts, callback) {
     
     // ensure the data has defaults
     data = _.defaults({}, data, defaultData);
+
+    // initialise the default version (using this technique to get around
+    // versionit being clever)
+    data.version = data.version || '';
     
     // if we have a template option specified, then add some additional paths
     if (opts.template) {
